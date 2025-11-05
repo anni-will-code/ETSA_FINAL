@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earthquake Time Series Analyzer</title>
+    <link rel="stylesheet" href="my_style.css">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Earthquake Time Series Analyzer</h1>
+            <p>Upload CSV data to analyze seismic time series with filtering and spectrogram visualization</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <label for="csvFile" class="upload-label">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <span id="uploadText">Choose CSV File or Drop Here</span>
+                </label>
+                <input type="file" id="csvFile" accept=".csv" hidden>
+                <div id="fileInfo" class="file-info"></div>
+            </div>
+
+            <div class="content-wrapper">
+                <!-- Filter Controls Sidebar -->
+                <aside class="filter-panel">
+                    <h2>Filter Controls</h2>
+
+                    <div class="filter-section">
+                        <label for="filterType">Filter Type</label>
+                        <select id="filterType">
+                            <option value="none">None</option>
+                            <option value="lowpass">Low Pass</option>
+                            <option value="highpass">High Pass</option>
+                            <option value="bandpass">Band Pass</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-section" id="lowpassControls" style="display: none;">
+                        <label for="lowpassCutoff">
+                            Cutoff Frequency: <span id="lowpassValue">10</span> Hz
+                        </label>
+                        <input type="range" id="lowpassCutoff" min="0.1" max="50" step="0.1" value="10">
+                    </div>
+
+                    <div class="filter-section" id="highpassControls" style="display: none;">
+                        <label for="highpassCutoff">
+                            Cutoff Frequency: <span id="highpassValue">1</span> Hz
+                        </label>
+                        <input type="range" id="highpassCutoff" min="0.1" max="50" step="0.1" value="1">
+                    </div>
+
+                    <div class="filter-section" id="bandpassControls" style="display: none;">
+                        <label for="bandpassLow">
+                            Low Cutoff: <span id="bandpassLowValue">1</span> Hz
+                        </label>
+                        <input type="range" id="bandpassLow" min="0.1" max="50" step="0.1" value="1">
+
+                        <label for="bandpassHigh">
+                            High Cutoff: <span id="bandpassHighValue">10</span> Hz
+                        </label>
+                        <input type="range" id="bandpassHigh" min="0.1" max="50" step="0.1" value="10">
+                    </div>
+
+                    <div class="filter-section">
+                        <label for="filterOrder">
+                            Filter Order: <span id="filterOrderValue">4</span>
+                        </label>
+                        <input type="range" id="filterOrder" min="1" max="8" step="1" value="4">
+                    </div>
+
+                    <button id="applyFilter" class="btn-primary" disabled>Apply Filter</button>
+                    <button id="resetFilter" class="btn-secondary" disabled>Reset to Original</button>
+                    <button id="downloadFiltered" class="btn-secondary" disabled>Download Filtered CSV</button>
+
+                    <div class="preset-section">
+                        <h3>Presets</h3>
+                        <button class="preset-btn" data-preset="earthquake">Earthquake (0.5-5 Hz)</button>
+                        <button class="preset-btn" data-preset="microseismic">Microseismic (1-10 Hz)</button>
+                        <button class="preset-btn" data-preset="teleseismic">Teleseismic (0.01-1 Hz)</button>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>Data Info</h3>
+                        <div id="dataInfo">
+                            <p>No data loaded</p>
+                        </div>
+                    </div>
+                
+                    <div class="filter-section">
+                        <label for="spectrogramOverlap">
+                            Spectrogram Overlap: <span id="overlapValue">0.50</span>
+                        </label>
+                        <input type="range" id="spectrogramOverlap" min="0" max="0.95" step="0.05" value="0.5">
+                    </div>
+                </aside>
+
+                <!-- Visualization Area -->
+                <main class="visualization-area">
+                    <div class="plot-container">
+                        <h2>Time Series Analysis</h2>
+                        <div id="tsaPlot" class="plot"></div>
+                    </div>
+
+                    <div class="plot-container">
+                        <h2>Spectrogram</h2>
+                        <div id="spectrogramPlot" class="plot"></div>
+                    </div>
+
+                    <div id="emptyState" class="empty-state">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 3v18h18"></path>
+                            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path>
+                        </svg>
+                        <p>Upload a CSV file to get started</p>
+                        <small>Expected format: time, amplitude columns</small>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="my_app.js"></script>
+</body>
+</html>

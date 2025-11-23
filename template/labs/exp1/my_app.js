@@ -38,6 +38,56 @@ const spectrogramOverlap = document.getElementById('spectrogramOverlap');
 const overlapValue = document.getElementById('overlapValue');
 
 // ===============================
+// DEFAULT CSV PRELOAD
+// Try a few likely relative paths so the example CSV can be loaded
+const defaultCsvCandidates = [
+    'dataaaa.csv',
+    './dataaaa.csv',
+    '../dataaaa.csv'
+];
+
+async function preloadCSV() {
+    // Do not preload if user already selected a file
+    if (csvFileInput && csvFileInput.files && csvFileInput.files.length > 0) return;
+
+    for (const path of defaultCsvCandidates) {
+        try {
+            const resp = await fetch(path);
+            if (!resp.ok) continue;
+            const text = await resp.text();
+            Papa.parse(text, {
+                header: true,
+                dynamicTyping: true,
+                skipEmptyLines: true,
+                complete: (results) => {
+                    processCSVData(results.data, path);
+                    // indicate that this is the preloaded example
+                    if (uploadText) uploadText.textContent = `Example: ${path}`;
+                },
+                error: (err) => {
+                    console.warn('Error parsing default CSV:', err);
+                }
+            });
+            return; // stop after first successful load
+        } catch (e) {
+            // try next candidate
+        }
+    }
+
+    // If we reach here, no default CSV was loaded — keep UI as-is
+    console.info('No default CSV found at expected locations.');
+}
+
+// Attempt preload once DOM is ready (call now if DOM already parsed)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preloadCSV);
+} else {
+    preloadCSV();
+}
+
+// end PRELOAD
+
+// ===============================
 // EVENT LISTENERS
 // ===============================
 

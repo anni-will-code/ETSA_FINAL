@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
         <script>
             window.onload = function () {
-                document.getElementById("references").className = "active treeview";
+                document.getElementById("contributors").className = "active treeview";
             }
         </script>
         <style>
@@ -28,6 +28,54 @@
           #aim:hover,#theory:hover,#pretest:hover,#procedure:hover,#simulation:hover,#result:hover,#posttest:hover,#contributors:hover,#references:hover{
             background-color: #009dff;
           }
+          
+          /* Table Styling */
+          .lab-section {
+            margin-bottom: 30px;
+          }
+          
+          .lab-section h2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #009dff;
+            padding-bottom: 10px;
+          }
+          
+          .lab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+          }
+          
+          .lab-table thead {
+            background-color: #009dff;
+            color: white;
+          }
+          
+          .lab-table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #0078b8;
+          }
+          
+          .lab-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+          }
+          
+          .lab-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+          }
+          
+          .lab-table tbody tr:hover {
+            background-color: #f0f8ff;
+            transition: background-color 0.3s ease;
+          }
         </style>
     </head>
 
@@ -36,7 +84,7 @@
 <div class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse" >
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -45,7 +93,7 @@
       <a class="navbar-brand" href="http://iitb.ac.in"><span><img src="images/iitrLogo.png" style="margin-top:-15px;height:50px;width: 400px;"></span></a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-     
+      
     </div>
   </div>
 </div>
@@ -54,7 +102,7 @@
         	<header class="main-header">
         <!-- Logo -->
         <a href="../index.html" class="logo" style="background-color:#009dff; border-right:solid;border-right-color: #1261A0;">
-        <p align="center" style="font-size:1em;"><b>Lab Name <!-- Write your lab name --> </b></p>
+        <p align="center" style="font-size:1em;"><b>Lab Name</b></p>
     </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" style="background-color:#009dff;">
@@ -68,9 +116,9 @@
                 <a href="../index.html"><i class="fa fa-dashboard"></i>Lab Name</a>
               </li>
               <li>
-                <a href="#">Earthquake Time Series Analyser <!-- Write your experiment name --> </a>
+                <a href="#">Earthquake Time Series Analyser</a>
               </li>
-              <li class="active">References</li>
+              <li class="active">Contributors</li>
             </ol>
           </section>
         </nav>
@@ -136,7 +184,7 @@
                     </a>
                 </li>
 
-           
+             
                 
                 <li class="treeview" id="posttest">
                     <a href=" posttest.html" id="posttest">
@@ -170,71 +218,89 @@
 
    
             <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
+                <!-- Content Header (Page header) -->
                 <section class="content-header">
-                <h1 align="center">
-                    Earthquake Time Series Analyser<!-- Write experiment name here --> 
-                </h1>
+                    <h1 class="text-center" style="margin:0;">Earthquake Time Series Analyser</h1>
                 </section>
-                    <!-- Main content -->
-                    <section class="content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1">
-                                    <!-- References -->
-                                    <div class="box box-primary">
-                                        <div class="box-header with-border">
-                                            <h3 class="box-title">References</h3>
-                                        </div>
-                                        <div class="box-body" style="font-size:15px; line-height:1.7;">
-                                            <ol>
-                                                <li>
-                                                    <p><strong>Core Textbooks:</strong></p>
-                                                    <ul style="list-style-type: none; padding-left: 20px;">
-                                                        <li>
-                                                            <p>Shearer, P. M. (2009). <em>Introduction to Seismology</em> (2nd Edition). Cambridge University Press.</p>
-                                                            <p class="text-muted"><small>A foundational text covering seismic waves, signal analysis, and earthquake data interpretation.</small></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>Lay, T., & Wallace, T. C. (1995). <em>Modern Global Seismology</em>. Academic Press.</p>
-                                                            <p class="text-muted"><small>Comprehensive theory on seismic wave propagation, spectrum analysis, and global earthquake mechanisms.</small></p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <p><strong>Digital Signal Processing Resources:</strong></p>
-                                                    <ul style="list-style-type: none; padding-left: 20px;">
-                                                        <li>
-                                                            <p>Oppenheim, A. V., & Schafer, R. W. (2009). <em>Discrete-Time Signal Processing</em> (3rd Edition). Prentice Hall.</p>
-                                                            <p class="text-muted"><small>Essential concepts in digital signal processing, filtering, and spectral analysis.</small></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>Smith, S. W. (1997). <em>The Scientist and Engineer's Guide to Digital Signal Processing</em>.</p>
-                                                            <p class="text-muted"><small>Practical approach to DSP concepts with applications in signal analysis.</small></p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <p><strong>Online Resources:</strong></p>
-                                                    <ul style="list-style-type: none; padding-left: 20px;">
-                                                        <li>
-                                                            <p>IRIS Education and Public Outreach Program</p>
-                                                            <p class="text-muted"><small>Educational resources and seismic data for teaching and research.</small></p>
-                                                        </li>
-                                                        <li>
-                                                            <p>ObsPy Documentation</p>
-                                                            <p class="text-muted"><small>Python framework for processing seismological data.</small></p>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ol>
-                                        </div>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                               
+
+                                <!-- Contributors -->
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Contributors</h3>
+                                    </div>
+                                    <div class="box-body" style="font-size:15px; line-height:1.7;">
+                                        <section class="lab-section">
+  <h2>Lab Proposer/Subject Matter Experts</h2>
+
+  <table class="lab-table">
+    <thead>
+      <tr>
+        <th>S No.</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Institute</th>
+        <th>Position</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Dr. R S Anand</td>
+        <td>anandfee@gmail.com</td>
+        <td>IIT Roorkee</td>
+        <td>Professor</td>
+      </tr>
+    </tbody>
+
+    <tbody>
+      <tr>
+        <td>2</td>
+        <td>Dr. Vipul Silwal</td>
+        <td>vipul.silwal@es.iitr.ac.in</td>
+        <td>IIT Roorkee</td>
+        <td>Professor</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <h2>Person Associated in the Lab Development</h2>
+
+  <table class="lab-table">
+    <thead>
+      <tr>
+        <th>S No.</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Institute</th>
+        <th>Position</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Aniket Agrawal</td>
+        <td>aniket_a@es.iitr.ac.in</td>
+        <td>IIT Roorkee</td>
+        <td>Student</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-
+                    </div>
+                </section>
             </div>
             <footer class="main-footer">
                 <h4 align="center">Lab contributed by <!-- Institute Name --> </h4>
@@ -243,7 +309,9 @@
         
     </body>
 </html>
-
+<script>
+ // Contributors page functions can be added here
+</script>
 <!-- ./wrapper -->
 <!-- jQuery 2.2.3 -->
 <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>

@@ -1,0 +1,103 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.iitr-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    border-bottom: 3px solid #1f6fb2;
+}
+
+.iitr-logo {
+    width: 70px;
+    margin-right: 15px;
+}
+
+.iitr-hindi {
+    font-size: 20px;
+}
+
+.iitr-english {
+    font-size: 16px;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    background: #2273b9;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-box {
+    background: #eeeeee;
+    padding: 60px 40px;
+    width: 70%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.hero-box h1 {
+    font-size: 50px;
+    color: #2c72b8;
+    margin-bottom: 25px;
+}
+
+.explore-btn {
+    background: #1967a9;
+    color: white;
+    padding: 10px 22px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.explore-btn:hover {
+    background: #0d4d80;
+}
+
+/* ===== CONTRIBUTION SECTION ===== */
+.contribution {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.contrib-logo {
+    width: 90px;
+    margin-bottom: 15px;
+}
+
+.ESC-logo {
+    width: 90px;
+    margin-bottom: 15px;
+}
+
+.contribution p {
+    font-size: 22px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: #2273b9;
+    color: white;
+    padding: 40px;
+    text-align: left;
+}
+
+.footer h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    font-size: 16px;
+    line-height: 24px;
+}
